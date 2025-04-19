@@ -1,7 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from utils import get_recent_commits  
 from llm import generate_changelog  
-from schemas import Request, Response 
+from schemas import ChangeEntry, Request, Response 
+from datetime import date
 
 app = FastAPI(title="AI Changelog Generator")  
 
@@ -15,22 +16,44 @@ async def generate_changelog_api(request: Request):
             request.branch
         )
         if not commits:
-            return {
-                "markdown": "No changes found in the specified timeframe",
-                "commits_processed": 0
-            }
+            return Response(
+                entries=[],
+                commits_processed=0,
+                repo_url=request.repo_path,
+                generated_at=date.today()
+            )
         # call openai api
-        changelog = generate_changelog(commits)
-        return {
-            "markdown": changelog,
-            "commits_processed": len(commits)
-        }
+        changes = generate_changelog(commits)
+        
+        entries = []
+        for change in changes:
+            try:
+                entries.append(ChangeEntry(
+                    date=change["date"],
+                    title=change["title"],
+                    whats_new=change["what's new"],
+                    breaking_change=change.get("breaking change"),
+                    impact=change["impact"],
+                    related_changes=change.get("related changes", [])
+                ))
+            except Exception as err:
+                print(f"Skipping invalid change entry: {err}")
+                continue
+                
+        if not entries:
+            raise HTTPException(
+                status_code=400,
+                detail="No valid changelog entries could be generated"
+            )
+        
+        return Response(
+            entries=entries,
+            commits_processed=len(commits),
+            repo_url=request.repo_path,
+            generated_at=date.today()
+        )
+    
     except Exception as err:
         raise HTTPException(status_code=400, detail=str(err))
     
 
-# Local Test Api command:
-# uvicorn main:app --reload
-
-
-# http POST http://localhost:8000/generate repo_path="https://github.com/AkikozZM/Changelog-App" since="3 days ago" branch="main"
