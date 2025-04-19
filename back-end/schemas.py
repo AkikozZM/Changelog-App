@@ -4,19 +4,9 @@ from datetime import date
 
 class ChangeEntry(BaseModel):
     date: date
-    title: str = Field(..., max_length=100)
-    whats_new: str = Field(..., alias="what's new")
-    breaking_change: Optional[str] = Field(
-        None,
-        alias="breaking change",
-        description="Explanation if this is a breaking change"
-    )
+    title: str
+    whats_new: str
     impact: str
-    related_changes: Optional[List[str]] = Field(
-        None,
-        alias="related changes",
-        description="List of associated modifications"
-    )
 
 class Request(BaseModel):
     repo_path: str

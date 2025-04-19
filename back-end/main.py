@@ -22,32 +22,16 @@ async def generate_changelog_api(request: Request):
                 repo_url=request.repo_path,
                 generated_at=date.today()
             )
+        
         # call openai api
-        changes = generate_changelog(commits)
-        
-        entries = []
-        for change in changes:
-            try:
-                entries.append(ChangeEntry(
-                    date=change["date"],
-                    title=change["title"],
-                    whats_new=change["what's new"],
-                    breaking_change=change.get("breaking change"),
-                    impact=change["impact"],
-                    related_changes=change.get("related changes", [])
-                ))
-            except Exception as err:
-                print(f"Skipping invalid change entry: {err}")
-                continue
-                
-        if not entries:
-            raise HTTPException(
-                status_code=400,
-                detail="No valid changelog entries could be generated"
-            )
-        
+        changelog = generate_changelog(commits)
+        # Convert dates from strings to date objects
+        for entry in changelog.get("entries", []):
+            if "date" in entry and isinstance(entry["date"], str):
+                entry["date"] = date.fromisoformat(entry["date"])
+
         return Response(
-            entries=entries,
+            entries=changelog.get("entries", []),
             commits_processed=len(commits),
             repo_url=request.repo_path,
             generated_at=date.today()
