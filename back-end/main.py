@@ -3,8 +3,18 @@ from utils import get_recent_commits
 from llm import generate_changelog  
 from schemas import ChangeEntry, Request, Response 
 from datetime import date
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="AI Changelog Generator")  
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For development only
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/generate", response_model=Response)
 async def generate_changelog_api(request: Request):
