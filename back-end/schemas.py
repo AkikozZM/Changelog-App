@@ -6,6 +6,7 @@ class ChangeEntry(BaseModel):
     date: date
     title: str
     whats_new: str
+    breaking_change: Optional[str] = None
     impact: str
 
 class Request(BaseModel):
