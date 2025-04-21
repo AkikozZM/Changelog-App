@@ -23,7 +23,11 @@ const Sidebar = () => {
     >
       {/* Header */}
       <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-        {!isCollapsed && <h2 className="font-semibold">Greptile</h2>}
+        {!isCollapsed && (
+          <Link to={"/home"}>
+            <h2 className="font-semibold text-green-700">Greptile</h2>
+          </Link>
+        )}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="p-1 rounded-md hover:bg-gray-200 cursor-pointer"

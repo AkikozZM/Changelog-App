@@ -1,0 +1,70 @@
+{
+  "entries": [
+    {
+      "date": "2025-04-21",
+      "title": "Polished Sidebar and Changelog Overview page layout",
+      "whats_new": "Refined the Sidebar component and set up the basic structure for the ChangelogOverview page, allowing users to navigate between sections like Home, Chat, and Changelog with collapsible functionality and visual effects.",
+      "breaking_change": null,
+      "impact": "Improves user navigation experience with a more polished and interactive sidebar."
+    },
+    {
+      "date": "2025-04-20",
+      "title": "Optimized constants storage",
+      "whats_new": "Moved constant values to the 'constants/index.tsx' file for better organization.",
+      "breaking_change": null,
+      "impact": "Simplifies maintenance and updates to constant values within the project."
+    },
+    {
+      "date": "2025-04-20",
+      "title": "Implemented front-end layout",
+      "whats_new": "Built the front-end layout including a sidebar with navigation options like Home, Chat, and Changelog, featuring hover and click effects, and the ability to collapse or expand.",
+      "breaking_change": null,
+      "impact": "Provides users with an intuitive interface to browse different sections easily."
+    },
+    {
+      "date": "2025-04-19",
+      "title": "Developed basic changelog web interface",
+      "whats_new": "Created a front-end web view that displays changelog information for GitHub repositories, automatically generated via OpenAI, including date, news, impact, and breaking change details if available.",
+      "breaking_change": "yes, now the front-end presents a user-facing view of changelog data.",
+      "impact": "Users can now see an organized view of changelog data directly in the web interface."
+    },
+    {
+      "date": "2025-04-19",
+      "title": "Updated LLM and schema support",
+      "whats_new": "Enhanced the generator to automatically detect breaking changes within commits.",
+      "breaking_change": "yes, the generator now supports auto-detection of breaking changes if present in the commit.",
+      "impact": "Improves the accuracy and comprehensiveness of changelog generation by automatically identifying breaking changes."
+    },
+    {
+      "date": "2025-04-19",
+      "title": "Implemented second version of LLM and cache deletion",
+      "whats_new": "Updated the language model with a second version and cleared cache to ensure fresh data processing, including fields like date, impact, title, and news.",
+      "breaking_change": null,
+      "impact": "Enhances the performance and relevance of generated changelog data."
+    },
+    {
+      "date": "2025-04-19",
+      "title": "Updated .gitignore",
+      "whats_new": "Modified the .gitignore file to include new temporary and build files.",
+      "breaking_change": null,
+      "impact": "Prevents unnecessary files from being committed, keeping the repository clean."
+    },
+    {
+      "date": "2025-04-18",
+      "title": "Basic back-end API development",
+      "whats_new": "Implemented the initial backend API to support application features.",
+      "breaking_change": null,
+      "impact": "Enables backend operations necessary for the application's functionality."
+    },
+    {
+      "date": "2025-04-18",
+      "title": "Project initialization",
+      "whats_new": "Set up the initial project structure and configuration.",
+      "breaking_change": null,
+      "impact": "Provides the foundational setup for ongoing development."
+    }
+  ],
+  "commits_processed": 9,
+  "repo_url": "https://github.com/AkikozZM/Changelog-App.git",
+  "generated_at": "2025-04-21"
+}

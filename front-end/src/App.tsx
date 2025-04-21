@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <main>
-        <div className="flex min-h-screen w-full flex-row">
+        <div className="w-full h-full">
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
