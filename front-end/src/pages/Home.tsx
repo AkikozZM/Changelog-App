@@ -1,6 +1,4 @@
-import React from "react";
-
-const Onboarding = () => {
+const Home = () => {
   return (
     <div className="max-w-2xl">
       <h1 className="text-3xl font-bold mb-2">Welcome to Greptile!</h1>
@@ -59,4 +57,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default Home;

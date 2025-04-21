@@ -1,6 +1,19 @@
 import { FiHome, FiMessageSquare, FiGitCommit } from "react-icons/fi";
 
-export const changelogItems = ["Overview", "Basil", "Acacia"];
+export const changelogItems = [
+  {
+    name: "Changelog_Overview",
+    path: "/changelog/overview",
+  },
+  {
+    name: "Changelog_Basil",
+    path: "/changelog/basil",
+  },
+  {
+    name: "Changelog_Acacia",
+    path: "/changelog/acacia",
+  },
+];
 
 export const mainItems = [
   {
