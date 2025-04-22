@@ -22,7 +22,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
   return (
     <div
       className={`h-full bg-gray-50 border-r border-gray-200 flex flex-col transition-all duration-300 ${
-        isCollapsed ? "w-[4.5rem]" : "w-64"
+        isCollapsed ? "" : "w-64"
       }`}
     >
       {/* Header */}
@@ -87,6 +87,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
                         {item.subItems.map((subItem) => (
                           <li key={subItem.name} className="relative">
                             <Link
+                              onClick={() => setActiveItem(item.name)}
                               to={subItem.path}
                               className={`block w-full text-left pl-4 py-2 rounded-md hover:bg-gray-200 text-sm cursor-pointer ${
                                 location.pathname === subItem.path

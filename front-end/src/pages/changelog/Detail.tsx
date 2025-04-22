@@ -53,7 +53,6 @@ export default function ChangelogDetail() {
   }, [date, index]);
 
   useEffect(() => {
-    // Initialize section refs
     sectionsRef.current = {
       "whats-new": document.getElementById("whats-new"),
       "breaking-change": document.getElementById("breaking-change"),
@@ -65,10 +64,9 @@ export default function ChangelogDetail() {
     const handleScroll = () => {
       if (!contentRef.current) return;
 
-      const scrollPosition = contentRef.current.scrollTop + 100; // Adding offset
+      const scrollPosition = contentRef.current.scrollTop + 100;
       let newActiveSection = "whats-new";
 
-      // Check which section is currently in view
       Object.entries(sectionsRef.current).forEach(([id, element]) => {
         if (element) {
           const { offsetTop, offsetHeight } = element;
@@ -129,142 +127,145 @@ export default function ChangelogDetail() {
         </div>
 
         {/* Title and Content Area */}
-        <div className="flex">
-          {/* Main Content */}
-          <div
-            className="flex-1 overflow-y-auto max-h-[calc(100vh-180px)]"
-            ref={contentRef}
-          >
-            <div className="mb-15">
-              <h1 className="text-3xl font-bold items-center">
-                {entry.title}
+        <div className="relative">
+          {/* Main Content with Nav */}
+          <div className="flex">
+            {/* Content Area */}
+            <div className="flex-1 overflow-y-auto pr-4" ref={contentRef}>
+              <div className="max-w-3xl mx-auto">
+                <div className="mb-15">
+                  <h1 className="text-3xl font-bold items-center">
+                    {entry.title}
+                    {entry.breaking_change && (
+                      <span className="inline-flex items-center bg-amber-200 rounded-md px-1 py-0 mx-1 border border-gray-200 text-red-700">
+                        <span className="text-sm">Breaking changes</span>
+                      </span>
+                    )}
+                  </h1>
+                </div>
+
+                <div id="whats-new" className="mb-8 scroll-mt-16">
+                  <h2 className="text-xl font-semibold mb-4">What's new</h2>
+                  <p className="text-gray-700 whitespace-pre-line">
+                    {entry.whats_new}
+                  </p>
+                </div>
+
                 {entry.breaking_change && (
-                  <>
-                    <span className="inline-flex items-center bg-amber-200 rounded-md px-1 py-0 mx-1 border border-gray-200 text-red-700">
-                      <span className="text-sm">Breaking changes</span>
-                    </span>
-                  </>
+                  <div id="breaking-change" className="mb-8 scroll-mt-16">
+                    <h2 className="text-xl font-semibold mb-4">
+                      Why is this a breaking change?
+                    </h2>
+                    <p className="text-gray-700 whitespace-pre-line">
+                      {entry.breaking_change}
+                    </p>
+                  </div>
                 )}
-              </h1>
-            </div>
 
-            {/* Sections with scroll-margin-top */}
-            <div id="whats-new" className="mb-8 scroll-mt-16">
-              <h2 className="text-xl font-semibold mb-4">What's new</h2>
-              <p className="text-gray-700 whitespace-pre-line">
-                {entry.whats_new}
-              </p>
-            </div>
+                <div id="impact" className="mb-8 scroll-mt-16">
+                  <h2 className="text-xl font-semibold mb-4">Impact</h2>
+                  <p className="text-gray-700 whitespace-pre-line">
+                    {entry.impact}
+                  </p>
+                </div>
 
-            {entry.breaking_change && (
-              <div id="breaking-change" className="mb-8 scroll-mt-16">
-                <h2 className="text-xl font-semibold mb-4">
-                  Why is this a breaking change?
-                </h2>
-                <p className="text-gray-700 whitespace-pre-line">
-                  {entry.breaking_change}
-                </p>
+                <div id="upgrade" className="mb-8 scroll-mt-16">
+                  <h2 className="text-xl font-semibold mb-4">Upgrade</h2>
+                  <p className="text-gray-700">
+                    Placeholder for instructions for upgrading
+                  </p>
+                </div>
+
+                <div id="related-changes" className="mb-8 scroll-mt-16">
+                  <h2 className="text-xl font-semibold mb-4">
+                    Related changes
+                  </h2>
+                  <p className="text-gray-700">
+                    Placeholder for related changes
+                  </p>
+                </div>
               </div>
-            )}
-
-            <div id="impact" className="mb-8 scroll-mt-16">
-              <h2 className="text-xl font-semibold mb-4">Impact</h2>
-              <p className="text-gray-700 whitespace-pre-line">
-                {entry.impact}
-              </p>
             </div>
 
-            <div id="upgrade" className="mb-8 scroll-mt-16">
-              <h2 className="text-xl font-semibold mb-4">Upgrade</h2>
-              <p className="text-gray-700">
-                Placehoder for instructions for upgrading
-              </p>
-            </div>
-
-            <div id="related-changes" className="mb-8 scroll-mt-16">
-              <h2 className="text-xl font-semibold mb-4">Related changes</h2>
-              <p className="text-gray-700">Placeholder for related changes</p>
-            </div>
-          </div>
-
-          {/* Sticky Sidebar */}
-          <div className="w-64 ml-8">
-            <div className="bg-white p-4 rounded-lg border border-gray-200 sticky top-4">
-              <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                ON THIS PAGE
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <button
-                    onClick={() => scrollToSection("whats-new")}
-                    className={`block w-full text-left px-2 py-1 rounded-md ${
-                      activeSection === "whats-new"
-                        ? "bg-blue-50 text-blue-600 font-medium"
-                        : "text-gray-600 hover:bg-gray-50"
-                    }`}
-                  >
-                    What's new
-                  </button>
-                </li>
-                {entry.breaking_change && (
+            {/* Floating Navigation Bar*/}
+            <div className="w-64 pl-4 sticky top-4 h-[calc(100vh-180px)] overflow-y-auto">
+              <div className="fixed bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                  ON THIS PAGE
+                </h3>
+                <ul className="space-y-2">
                   <li>
                     <button
-                      onClick={() => scrollToSection("breaking-change")}
-                      className={`block w-full text-left px-2 py-1 rounded-md ${
-                        activeSection === "breaking-change"
-                          ? "bg-amber-50 text-amber-600 font-medium"
+                      onClick={() => scrollToSection("whats-new")}
+                      className={`block w-full text-left px-2 py-1 rounded-md cursor-pointer ${
+                        activeSection === "whats-new"
+                          ? "bg-blue-50 text-blue-600 font-medium"
                           : "text-gray-600 hover:bg-gray-50"
                       }`}
                     >
-                      Breaking changes
+                      What's new
                     </button>
                   </li>
-                )}
-                <li>
-                  <button
-                    onClick={() => scrollToSection("impact")}
-                    className={`block w-full text-left px-2 py-1 rounded-md ${
-                      activeSection === "impact"
-                        ? "bg-blue-50 text-blue-600 font-medium"
-                        : "text-gray-600 hover:bg-gray-50"
-                    }`}
-                  >
-                    Impact
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("upgrade")}
-                    className={`block w-full text-left px-2 py-1 rounded-md ${
-                      activeSection === "upgrade"
-                        ? "bg-blue-50 text-blue-600 font-medium"
-                        : "text-gray-600 hover:bg-gray-50"
-                    }`}
-                  >
-                    Upgrade
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("related-changes")}
-                    className={`block w-full text-left px-2 py-1 rounded-md ${
-                      activeSection === "related-changes"
-                        ? "bg-blue-50 text-blue-600 font-medium"
-                        : "text-gray-600 hover:bg-gray-50"
-                    }`}
-                  >
-                    Related changes
-                  </button>
-                </li>
-              </ul>
+                  {entry.breaking_change && (
+                    <li>
+                      <button
+                        onClick={() => scrollToSection("breaking-change")}
+                        className={`block w-full text-left px-2 py-1 rounded-md cursor-pointer ${
+                          activeSection === "breaking-change"
+                            ? "bg-amber-50 text-amber-600 font-medium"
+                            : "text-gray-600 hover:bg-gray-50"
+                        }`}
+                      >
+                        Breaking changes
+                      </button>
+                    </li>
+                  )}
+                  <li>
+                    <button
+                      onClick={() => scrollToSection("impact")}
+                      className={`block w-full text-left px-2 py-1 rounded-md cursor-pointer ${
+                        activeSection === "impact"
+                          ? "bg-blue-50 text-blue-600 font-medium"
+                          : "text-gray-600 hover:bg-gray-50"
+                      }`}
+                    >
+                      Impact
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => scrollToSection("upgrade")}
+                      className={`block w-full text-left px-2 py-1 rounded-md cursor-pointer ${
+                        activeSection === "upgrade"
+                          ? "bg-blue-50 text-blue-600 font-medium"
+                          : "text-gray-600 hover:bg-gray-50"
+                      }`}
+                    >
+                      Upgrade
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => scrollToSection("related-changes")}
+                      className={`block w-full text-left px-2 py-1 rounded-md cursor-pointer ${
+                        activeSection === "related-changes"
+                          ? "bg-blue-50 text-blue-600 font-medium"
+                          : "text-gray-600 hover:bg-gray-50"
+                      }`}
+                    >
+                      Related changes
+                    </button>
+                  </li>
+                </ul>
 
-              <div className="mt-6 pt-4 border-t border-gray-200">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                  RELATED PRODUCTS
-                </h3>
-                <div className="flex items-center">
-                  <FiCheckSquare className="text-green-500 mr-2" />
-                  <span>Billing</span>
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                    RELATED PRODUCTS
+                  </h3>
+                  <div className="flex items-center">
+                    <FiCheckSquare className="text-green-500 mr-2" />
+                    <span className="cursor-pointer">Billing</span>
+                  </div>
                 </div>
               </div>
             </div>
