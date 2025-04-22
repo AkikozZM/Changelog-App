@@ -2,29 +2,10 @@ import { useState, useEffect } from "react";
 import { FiSearch, FiAlertTriangle, FiCalendar } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { LoadingSkeleton } from "../../components/ui/loading-skeleton";
-
-interface ChangeEntry {
-  date: string;
-  title: string;
-  whats_new: string;
-  breaking_change: string | null;
-  impact: string;
-}
-
-interface ChangelogData {
-  entries: ChangeEntry[];
-  commits_processed: number;
-  repo_url: string;
-  generated_at: string;
-}
-
-interface GroupedEntry {
-  date: string;
-  entries: ChangeEntry[];
-}
+import { ChangelogResponse, GroupedEntry, ChangeEntry } from "../../types";
 
 export default function ChangelogOverview() {
-  const [data, setData] = useState<ChangelogData | null>(null);
+  const [data, setData] = useState<ChangelogResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState<"all" | "breaking">("all");

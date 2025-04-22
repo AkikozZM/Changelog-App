@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 import { FiCheckSquare } from "react-icons/fi";
 import { useEffect, useState, useRef } from "react";
 import { LoadingSkeleton } from "../../components/ui/loading-skeleton";
-
-interface ChangeEntry {
-  date: string;
-  title: string;
-  whats_new: string;
-  breaking_change: string | null;
-  impact: string;
-}
+import { ChangeEntry } from "../../types";
 
 export default function ChangelogDetail() {
   const { date, index } = useParams<{ date: string; index: string }>();

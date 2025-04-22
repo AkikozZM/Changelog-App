@@ -3,7 +3,7 @@ export interface ChangeEntry {
   title: string;
   whats_new: string;
   impact: string;
-  breaking_change?: string;
+  breaking_change: string | null;
 }
 
 export interface ChangelogResponse {
@@ -11,4 +11,9 @@ export interface ChangelogResponse {
   commits_processed: number;
   repo_url: string;
   generated_at: string;
+}
+
+export interface GroupedEntry {
+  date: string;
+  entries: ChangeEntry[];
 }
