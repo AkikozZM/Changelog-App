@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FiSearch, FiAlertTriangle, FiCalendar } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { LoadingSkeleton } from "../../components/ui/loading-skeleton";
 
 interface ChangeEntry {
   date: string;
@@ -76,7 +77,12 @@ export default function ChangelogOverview() {
 
   const groupedEntries = groupByDate(filteredEntries);
 
-  if (loading) return <div className="p-8">Loading changelog...</div>;
+  if (loading)
+    return (
+      <div className="p-8">
+        <LoadingSkeleton />
+      </div>
+    );
   if (!data)
     return (
       <div className="p-8 text-red-500">Failed to load changelog data</div>

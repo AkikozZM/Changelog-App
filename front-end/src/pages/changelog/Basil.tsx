@@ -1,7 +1,5 @@
-import React from "react";
-
 const ChangelogBasil = () => {
-  return <div>Basil</div>;
+  return <div>Placeholder For Basil</div>;
 };
 
 export default ChangelogBasil;

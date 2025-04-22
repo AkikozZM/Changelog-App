@@ -35,7 +35,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Content area with dynamic margin */}
       <div
         className={`flex-1 overflow-y-auto transition-all duration-300 ${
-          isCollapsed ? "" : "ml-64" // Match sidebar widths
+          isCollapsed ? "px-20" : "ml-64" // Match sidebar widths
         }`}
       >
         <div className="mx-auto w-full max-w-6xl px-4 py-8">{children}</div>

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FiCheckSquare } from "react-icons/fi";
 import { useEffect, useState, useRef } from "react";
+import { LoadingSkeleton } from "../../components/ui/loading-skeleton";
 
 interface ChangeEntry {
   date: string;
@@ -94,7 +95,12 @@ export default function ChangelogDetail() {
     };
   }, [entry]);
 
-  if (loading) return <div className="p-8">Loading entry...</div>;
+  if (loading)
+    return (
+      <div className="p-8">
+        <LoadingSkeleton />
+      </div>
+    );
   if (!entry) return <div className="p-8 text-red-500">Entry not found</div>;
 
   return (

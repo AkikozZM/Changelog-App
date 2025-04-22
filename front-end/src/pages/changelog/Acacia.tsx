@@ -1,7 +1,5 @@
-import React from "react";
-
 const ChangelogAcacia = () => {
-  return <div>Acacia</div>;
+  return <div>Placeholder For Acacia</div>;
 };
 
 export default ChangelogAcacia;
