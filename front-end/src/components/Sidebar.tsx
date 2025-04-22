@@ -4,11 +4,15 @@ import { mainItems } from "../constants";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-const Sidebar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+interface SidebarProps {
+  isCollapsed: boolean;
+  setIsCollapsed: (collapsed: boolean) => void;
+}
+
+const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
   const [activeItem, setActiveItem] = useState("Overview");
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
-  // Toggle submenu
+
   const toggleSubmenu = (name: string) => {
     setOpenSubmenu(openSubmenu === name ? null : name);
   };
@@ -17,8 +21,8 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`h-screen bg-gray-50 border-r border-gray-200 flex flex-col transition-all duration-300 ${
-        isCollapsed ? "w-15" : "w-64"
+      className={`h-full bg-gray-50 border-r border-gray-200 flex flex-col transition-all duration-300 ${
+        isCollapsed ? "w-[4.5rem]" : "w-64"
       }`}
     >
       {/* Header */}
