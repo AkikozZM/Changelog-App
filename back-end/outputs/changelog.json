@@ -44,10 +44,31 @@
     },
     {
       "date": "2025-04-21",
+      "title": "Polished Sidebar and Changelog Overview page layout",
+      "whats_new": "Refined the Sidebar component and set up the basic structure for the ChangelogOverview page, allowing users to navigate between sections like Home, Chat, and Changelog with collapsible functionality and visual effects.",
+      "breaking_change": null,
+      "impact": "Improves user navigation experience with a more polished and interactive sidebar."
+    },
+    {
+      "date": "2025-04-21",
       "title": "Integration of JSON cache and layout adjustments",
       "whats_new": "Implemented cache-based data loading method, centralized layout content, and updated iconography.",
       "breaking_change": "The changelog display now relies on cached JSON files, which changes the real-time data flow and layout structure.",
       "impact": "Faster load times and improved layout for users, though cache management becomes necessary to ensure accuracy."
+    },
+    {
+      "date": "2025-04-20",
+      "title": "Optimized constants storage",
+      "whats_new": "Moved constant values to the 'constants/index.tsx' file for better organization.",
+      "breaking_change": null,
+      "impact": "Simplifies maintenance and updates to constant values within the project."
+    },
+    {
+      "date": "2025-04-20",
+      "title": "Implemented front-end layout",
+      "whats_new": "Built the front-end layout including a sidebar with navigation options like Home, Chat, and Changelog, featuring hover and click effects, and the ability to collapse or expand.",
+      "breaking_change": null,
+      "impact": "Provides users with an intuitive interface to browse different sections easily."
     },
     {
       "date": "2025-04-19",
@@ -62,6 +83,20 @@
       "whats_new": "Updated the AI model to support entry details like title, impact, and breaking changes, and removed the previous cache system.",
       "breaking_change": "This upgrade introduces a new way to generate and present changelogs, replacing previous static or less detailed methods.",
       "impact": "The changelog process becomes more informative and sophisticated, assisting users in understanding the severity and scope of changes."
+    }
+    {
+      "date": "2025-04-18",
+      "title": "Basic back-end API development",
+      "whats_new": "Implemented the initial backend API to support application features.",
+      "breaking_change": null,
+      "impact": "Enables backend operations necessary for the application's functionality."
+    },
+    {
+      "date": "2025-04-18",
+      "title": "Project initialization",
+      "whats_new": "Set up the initial project structure and configuration.",
+      "breaking_change": null,
+      "impact": "Provides the foundational setup for ongoing development."
     }
   ],
   "commits_processed": 271,
