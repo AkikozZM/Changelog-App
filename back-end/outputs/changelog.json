@@ -83,7 +83,7 @@
       "whats_new": "Updated the AI model to support entry details like title, impact, and breaking changes, and removed the previous cache system.",
       "breaking_change": "This upgrade introduces a new way to generate and present changelogs, replacing previous static or less detailed methods.",
       "impact": "The changelog process becomes more informative and sophisticated, assisting users in understanding the severity and scope of changes."
-    }
+    },
     {
       "date": "2025-04-18",
       "title": "Basic back-end API development",
@@ -97,7 +97,7 @@
       "whats_new": "Set up the initial project structure and configuration.",
       "breaking_change": null,
       "impact": "Provides the foundational setup for ongoing development."
-    }
+    },
   ],
   "commits_processed": 271,
   "repo_url": "https://github.com/AkikozZM/Changelog-App.git",
