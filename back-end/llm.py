@@ -33,17 +33,16 @@ def generate_changelog(commit_data):
                             "date": "YYYY-MM-DD",
                             "title": "summary of change",
                             "whats_new": "description of change",
-                            "breaking_change": "NULL OR description of breaking changes, DONOT say YES, YOU NEED TO SUMMARIZE",
+                            "breaking_change": "null OR description of breaking changes, DONOT say YES, YOU NEED TO SUMMARIZE",
                             "impact": "how this affects users"
                         }
                     ]
                 }
-                For each commit, if it contains breaking changes by looking for keywords like: 
+                For each commit, summarize and write a description of breaking changes if it contains breaking changes by looking for keywords like: 
                     - "breaking change"
                     - "important change"
                     - "significant change"
-                Then, you need to summarize and write a description of breaking changes.
-                Make breaking_change field empty if you don't find the breaking changes.
+                You can leave breaking_change field null if you don't find the breaking changes.
                 NEVER include any other variations.
                 If you find the breaking changes, you need to summarize the breaking changes and write a description of why it is a breaking change.
                 Make the output human-readable for non-technical users.""",
