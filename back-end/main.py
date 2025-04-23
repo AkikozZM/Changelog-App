@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from utils import get_recent_commits  
 from llm import generate_changelog  
-from schemas import Request, Response 
+from schemas import Response 
 from datetime import date
 from fastapi.middleware.cors import CORSMiddleware
 import json

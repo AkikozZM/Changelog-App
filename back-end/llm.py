@@ -20,7 +20,7 @@ def generate_changelog(commit_data):
             f"Date: {dt.strftime('%Y-%m-%d')}\nMessage: {msg}"
             for msg, dt in commit_data
         ]
-
+        # Format messages to OpenAI
         response = client.chat.completions.create(
             model= os.getenv("OPENAI_MODEL"),
             response_format={"type": "json_object"},
