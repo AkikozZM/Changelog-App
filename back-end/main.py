@@ -18,7 +18,7 @@ REPO_OWNER = os.getenv("REPO_OWNER")
 REPO_NAME = os.getenv("REPO_NAME")
 CHANGELOG_PATH = "./back-end/outputs/changelog.json"
 
-@app.post("/webhook")
+@app.post("/generate")
 async def handle_webhook(request: Request):
     try:
         # Get the GitHub payload
