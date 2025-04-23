@@ -33,7 +33,7 @@ def generate_changelog(commit_data):
                             "date": "YYYY-MM-DD",
                             "title": "summary of change",
                             "whats_new": "description of change",
-                            "breaking_change": "description of the breaking change",
+                            "breaking_change": "null OR description of breaking changes",
                             "impact": "how this affects users"
                         }
                     ]
