@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
 
 
-@app.post("/local_generate", response_model=Response)
+@app.post("/generate", response_model=Response)
 async def generate_changelog_api():
     try:
         # Validate environment variables
@@ -151,7 +151,7 @@ async def generate_changelog_api():
         )
         
         # Save JSON file
-        save_response_to_json(response)
+        save_to_github(response)
         return response
     
     except Exception as err:
