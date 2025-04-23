@@ -2,69 +2,41 @@
   "entries": [
     {
       "date": "2025-04-23",
-      "title": "AI changelog web app completed",
-      "whats_new": "The web application for automatically summarizing GitHub changes has been finished, with API deployed on Railway and front-end on Vercel.",
-      "breaking_change": "The app now automatically summarizes changes based on commit history, changing how users receive changelog updates.",
-      "impact": "Users will now get automatic, summarized changelog updates without manual entry, simplifying updates."
+      "title": "AI web app development completed and deployed",
+      "whats_new": "The AI-powered changelog web application is now complete, automatically summarizing Git commit changes. The API is deployed on Railway, and the front-end on Vercel. Unnecessary code has been cleaned up.",
+      "breaking_change": "The web app now automatically generates summaries of Git changes, altering previous manual methods, and improving user experience with automation.",
+      "impact": "Users receive instant, automated changelog summaries for Git repositories, streamlining update tracking."
     },
     {
       "date": "2025-04-23",
-      "title": "Open API configuration options added",
-      "whats_new": "Users can now configure their own Git repository, OpenAI LLM, and API keys for personalized changelog generation.",
-      "breaking_change": "The system now supports user-specific configurations for repositories and AI models, offering more customization.",
-      "impact": "Users can tailor the changelog generation to their own repositories and AI preferences, increasing flexibility."
-    },
-    {
-      "date": "2025-04-23",
-      "title": "Bug fixes on saving to Git and LLM enhancements",
-      "whats_new": "Fixed issues related to saving data to Git and improved the LLM to better detect breaking changes automatically.",
-      "breaking_change": null,
-      "impact": "The system is more reliable in saving changelog data and better detects important changes, improving user experience."
-    },
-    {
-      "date": "2025-04-23",
-      "title": "Cache and entries management improvements",
-      "whats_new": "Implemented strategies to cache changelog data locally and on GitHub, with limits on the number of entries stored.",
-      "breaking_change": null,
-      "impact": "Performance and reliability are improved by caching; users experience faster load times and improved data management."
-    },
-    {
-      "date": "2025-04-23",
-      "title": "Frontend interface enhancements and detail page",
-      "whats_new": "Enhanced the user interface, including a detailed changelog page where clicking an entry navigates to detailed information.",
-      "breaking_change": null,
-      "impact": "Navigation and readability of changelogs are improved, making it easier for users to find detailed change logs."
+      "title": "Configuration options for users expanded",
+      "whats_new": "Users can now configure their own Git repositories, OpenAI LLM settings, and API keys, increasing flexibility.",
+      "breaking_change": "The system now supports user-defined configurations for repositories and open AI parameters, allowing personalized setup.",
+      "impact": "Users can tailor the changelog generation to their specific repositories and preferences, making it more versatile."
     },
     {
       "date": "2025-04-22",
-      "title": "Interface management and UI polishing",
-      "whats_new": "Merged interfaces into a single file for easier management, decorated pages, added loading effects, and cleaned up code.",
-      "breaking_change": null,
-      "impact": "Development and maintenance are streamlined, resulting in a smoother user experience."
+      "title": "Front-end interface improvements",
+      "whats_new": "The front-end pages have been decorated and polished, including loading effects, detailed views, and navigation improvements. The changelog detail page now links to specific entries.",
+      "breaking_change": "The layout now navigates from changelog entries directly to detailed logs, improving user navigation experience.",
+      "impact": "Users experience a smoother, more informative interface for exploring changelog details."
     },
     {
       "date": "2025-04-21",
-      "title": "Connection of frontend and backend via JSON cache",
-      "whats_new": "Implemented a strategy where the backend generates a JSON cache file that the front-end loads to display changelogs.",
-      "breaking_change": "The backend now generates a JSON cache before serving changelog data, altering how data retrieval works.",
-      "impact": "Speeds up loading times and improves user experience by serving static cached data instead of real-time computation."
+      "title": "Introduction of cached JSON data for faster loading",
+      "whats_new": "The back-end now generates a JSON cache file for changelog data. The front-end loads this cache, with layout and icon changes integrated.",
+      "breaking_change": "The changelog data source shifted to a JSON cache, optimizing load speed and performance.",
+      "impact": "Users benefit from faster page loads and more responsive navigation through cached changelog data."
     },
     {
       "date": "2025-04-19",
-      "title": "Basic backend API and LLM update",
-      "whats_new": "Implemented initial backend API and updated the LLM to support detection of auto-find breaking changes.",
-      "breaking_change": "The system now supports automatic detection of breaking changes within commits, changing how changelogs are generated.",
-      "impact": "Enhanced detection of significant changes allows for more accurate and informative changelog summaries."
-    },
-    {
-      "date": "2025-04-19",
-      "title": "Support for detailed commit info with new LLM",
-      "whats_new": "Released a second version of the LLM that now includes additional details like date, impact, title, and notes for each commit.",
+      "title": "Initial frontend and backend implementations",
+      "whats_new": "Basic front-end layout, sidebar, and page structure have been built. Back-end API has been implemented, supporting new commit features like titles, summaries, breaking change detection, and impacts.",
       "breaking_change": null,
-      "impact": "More comprehensive commit summaries improve the clarity and usefulness of changelog entries."
+      "impact": "Foundation has been laid for a web interface with automated changelog features, improving accessibility."
     }
   ],
-  "commits_processed": 274,
+  "commits_processed": 278,
   "repo_url": "https://github.com/AkikozZM/Changelog-App.git",
   "generated_at": "2025-04-23"
 }
