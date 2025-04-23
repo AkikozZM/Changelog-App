@@ -1,18 +1,12 @@
 {
   "generated_at": "2025-04-23",
-  "commits_processed": 2,
+  "commits_processed": 1,
   "entries": [
     {
       "date": "2025-04-22",
-      "message": "Update main.py",
-      "author": "AkikozZM",
-      "sha": "535dbfd6280829bbff87afc3aa8a5834941476e4"
-    },
-    {
-      "date": "2025-04-22",
-      "message": "Merge branch 'main' of https://github.com/AkikozZM/Changelog-App",
-      "author": "AkikozZM",
-      "sha": "cb37c17a4eec0eaf15db9fce92ed33b00fb7ffaf"
+      "message": "Update changelog 2025-04-23",
+      "author": "AkikozzzzzzM",
+      "sha": "69331967c4a6767e84036068ba1f078e07df9d50"
     }
   ]
 }
