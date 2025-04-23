@@ -39,9 +39,16 @@ async def handle_webhook():
 
         # Generate formatted changelog using LLM
         changelog = generate_changelog(commits)
+
+        changelog_data = {
+            "entries": changelog.get("entries", []),
+            "commits_processed": len(commits),  # Actual commit count
+            "repo_url": REPO_PATH,
+            "generated_at": date.today().isoformat()
+        }
         
         # Save to GitHub repository
-        save_to_github(changelog)
+        save_to_github(changelog_data)
         
         return {
             "status": "success",
