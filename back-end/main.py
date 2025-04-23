@@ -25,7 +25,7 @@ REPO_NAME = os.getenv("REPO_NAME")
 CHANGELOG_PATH = "./back-end/outputs/changelog.json"
 
 @app.post("/git_generate")
-async def handle_webhook(request: Request):
+async def handle_webhook():
     try:
         # Validate environment variables
         if not all([REPO_PATH, GITHUB_TOKEN, REPO_OWNER, REPO_NAME]):
