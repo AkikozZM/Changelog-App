@@ -57,7 +57,12 @@ async def handle_webhook():
 def save_to_github(data):
     """Save the changelog data to the GitHub repository"""
     # Convert data to JSON string
-    json_content = json.dumps(data, indent=2)
+    json_content = json.dumps({
+            "entries": data.get("entries", []),
+            "commits_processed": data.get("commits_processed", 0),
+            "repo_url": data.get("repo_url", REPO_PATH),
+            "generated_at": data.get("generated_at", date.today().isoformat())
+        }, indent=2)
     
     # Encode content to base64
     encoded_content = base64.b64encode(json_content.encode("utf-8")).decode("utf-8")
@@ -167,8 +172,13 @@ def save_response_to_json(response: Response) -> str:
     
     try:
         with open(filepath, "w") as f:
-            json.dump(response.dict(), f, indent=2, default=str)
-        print(f"Successfully saved to {filepath}")  # Debug logging
+            json.dump({
+                "entries": [entry.dict() for entry in response.entries],
+                "commits_processed": response.commits_processed,
+                "repo_url": response.repo_url,
+                "generated_at": response.generated_at.isoformat()
+            }, f, indent=2)
+        print(f"Saved local changelog to {filepath}")
         return str(filepath)
     except Exception as e:
         print(f"Failed to save file: {str(e)}")
