@@ -38,11 +38,13 @@ def generate_changelog(commit_data):
                         }
                     ]
                 }
-                For each commit, determine if it contains breaking changes by looking for keywords like: 
+                For each commit, if it contains breaking changes by looking for keywords like: 
                     - "breaking change"
                     - "important change"
                     - "significant change"
+                Then, you need to summarize and write a description of breaking changes.
                 Make breaking_change field None if you don't find the breaking changes.
+                NEVER include any other variations.
                 If you find the breaking changes, you need to summarize the breaking changes and write a description of why it is a breaking change.
                 Make the output human-readable for non-technical users.""",
             }, {
