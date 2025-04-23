@@ -78,7 +78,7 @@ def save_response_to_json(response: Response) -> str:
     filepath = output_dir / filename
     
     with open(filepath, "w") as f:
-        json.dump(response.model_dump(), f, indent=2, default=str)
+        json.dump(response.dict(), f, indent=2, default=str)
 
     # return the saved file path
     return str(filepath)
