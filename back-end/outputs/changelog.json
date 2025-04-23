@@ -2,161 +2,185 @@
   "entries": [
     {
       "date": "2025-04-23",
+      "title": "Update changelog 2025-04-23",
+      "whats_new": "Multiple updates to the changelog, including fixing bugs, setting up cache storage, and merging branches.",
+      "breaking_change": null,
+      "impact": "Users will see more accurate and up-to-date changelog entries with improved caching and stability."
+    },
+    {
+      "date": "2025-04-23",
       "title": "Update main.py",
-      "whats_new": "Code in main.py has been updated, possibly enhancing features or fixing issues.",
+      "whats_new": "Updated the main Python script to enhance functionality.",
       "breaking_change": null,
-      "impact": "Users may experience improved functionality or stability in the application's main process."
+      "impact": "Improves the core program performance and features for users."
     },
     {
       "date": "2025-04-23",
-      "title": "Fix bug related to saving to GitHub repository",
-      "whats_new": "Resolved an issue that prevented saving data to GitHub repositories.",
+      "title": "Add some limit on entries",
+      "whats_new": "Implemented limits on the number of changelog entries displayed or stored.",
       "breaking_change": null,
-      "impact": "Users can now reliably save data directly to their GitHub repositories."
+      "impact": "Prevents overflowing or excessive data, helping users focus on recent changes."
     },
     {
       "date": "2025-04-23",
-      "title": "Set up cache saving to GitHub API",
-      "whats_new": "Configured the system to save cache data using the GitHub API.",
+      "title": "Merge branch 'main'",
+      "whats_new": "Merged latest changes from the main branch.",
       "breaking_change": null,
-      "impact": "Cache data is now stored via GitHub, improving data persistence and accessibility."
+      "impact": "Ensures the project is synchronized with the latest updates for users."
     },
     {
       "date": "2025-04-23",
-      "title": "Save cache permanently locally",
-      "whats_new": "Implemented storage of cache data to local persistent storage.",
+      "title": "Keep the local generate cache strategy",
+      "whats_new": "Maintained the approach of generating and storing changelog cache locally.",
       "breaking_change": null,
-      "impact": "Increased data reliability by ensuring cache data persists locally across sessions."
-    },
-    {
-      "date": "2025-04-23",
-      "title": "Add entry limits",
-      "whats_new": "Introduced limits to the number of entries that can be stored or displayed.",
-      "breaking_change": null,
-      "impact": "Prevents overload of data and maintains system performance by limiting the number of entries."
-    },
-    {
-      "date": "2025-04-23",
-      "title": "Update changelog for 2025-04-23",
-      "whats_new": "Changelog entries for April 23, 2025, have been refreshed or added.",
-      "breaking_change": null,
-      "impact": "Users see the latest updates and changes made on this date."
-    },
-    {
-      "date": "2025-04-23",
-      "title": "Merge main branch",
-      "whats_new": "Merged latest changes from the main branch of the code repository.",
-      "breaking_change": null,
-      "impact": "Ensures the latest stable code is integrated, possibly including new features or fixes."
+      "impact": "Users experience faster access to changelog data with local caching."
     },
     {
       "date": "2025-04-23",
       "title": "Update requirements.txt",
-      "whats_new": "Updated the list of Python dependencies required for the project.",
+      "whats_new": "Updated dependencies for the project.",
       "breaking_change": null,
-      "impact": "Ensures the environment has all necessary libraries for the application to run properly."
+      "impact": "Ensures compatibility and stability across development environments."
     },
     {
       "date": "2025-04-23",
-      "title": "Interact with Railway and GitHub webhook",
-      "whats_new": "Integrated system with Railway deployment platform and GitHub webhooks for automation.",
+      "title": "Interact with Railway and Github webhook",
+      "whats_new": "Integrated deployment and webhook functionalities with Railway and GitHub.",
       "breaking_change": null,
-      "impact": "Automates deployment and updates, making developer workflows more efficient."
+      "impact": "Allows automated updates and deployments, improving user workflow."
     },
     {
       "date": "2025-04-23",
-      "title": "Deploy on Railway",
-      "whats_new": "Application deployed successfully on Railway hosting platform.",
+      "title": "Deploy on Railway Ready",
+      "whats_new": "Deployment setup completed for Railway hosting platform.",
       "breaking_change": null,
-      "impact": "Application is now available for public or team use via Railway hosting."
+      "impact": "Users can now access the service via Railway hosting environment."
     },
     {
       "date": "2025-04-23",
-      "title": "Create requirements.txt and railway.json",
-      "whats_new": "Created configuration files for dependencies and Railway deployment.",
+      "title": "Back-end API deploy on Railway Success",
+      "whats_new": "Successfully deployed backend API to Railway.",
       "breaking_change": null,
-      "impact": "Sets up the project for consistent environment setup and deployment automation."
+      "impact": "Backend services are now available for users."
+    },
+    {
+      "date": "2025-04-23",
+      "title": "Update requirements.txt",
+      "whats_new": "Further updates to project dependencies.",
+      "breaking_change": null,
+      "impact": "Improves environment stability and compatibility for users."
+    },
+    {
+      "date": "2025-04-23",
+      "title": "Python 3.11",
+      "whats_new": "Updated to support Python 3.11 runtime.",
+      "breaking_change": null,
+      "impact": "Ensures the project runs with the latest Python features and performance improvements."
+    },
+    {
+      "date": "2025-04-23",
+      "title": "Create railway.json",
+      "whats_new": "Configuration file for Railway deployment created.",
+      "breaking_change": null,
+      "impact": "Facilitates deployment automation on Railway platform."
+    },
+    {
+      "date": "2025-04-23",
+      "title": "Open Back-end API to other users",
+      "whats_new": "The backend API is now accessible to external users.",
+      "breaking_change": "Yes",
+      "impact": "This is a significant change as it allows external access to the API, which may introduce security considerations."
     },
     {
       "date": "2025-04-22",
-      "title": "Collect interface definitions",
-      "whats_new": "Unified interface definitions into a single file for better manageability.",
+      "title": "Collect interface to src\\types.ts",
+      "whats_new": "Organized interfaces into a single file for better management.",
       "breaking_change": null,
-      "impact": "Simplifies interface management for developers working on the project."
+      "impact": "Simplifies code maintenance for developers."
     },
     {
       "date": "2025-04-22",
-      "title": "Polish front-end page",
-      "whats_new": "Enhanced the homepage with decoration, loading effects, and code cleanup.",
+      "title": "Polish Front-end Page",
+      "whats_new": "Enhanced visual design and added loading effects to the homepage.",
       "breaking_change": null,
-      "impact": "Provides a more polished and user-friendly homepage experience."
+      "impact": "Provides users with a more polished and engaging interface."
     },
     {
       "date": "2025-04-22",
-      "title": "Add details to Detail.tsx",
+      "title": "Add more details on the Detail.tsx",
       "whats_new": "Enhanced changelog detail page with a floating navbar and additional information.",
-      "breaking_change": null,
-      "impact": "Improves navigation and details display for individual changelog entries."
+      "breaking_change": "Yes",
+      "impact": "Changes how details are displayed and navigated, improving user experience but altering previous page behavior."
     },
     {
       "date": "2025-04-21",
-      "title": "Implement JSON cache connection",
-      "whats_new": "Changed back-end to generate a JSON cache file, which the front-end loads to display changelog entries.",
+      "title": "Use json cache strategy to connect front-end and back-end",
+      "whats_new": "Introduced JSON file caching for faster changelog loading.",
       "breaking_change": "Yes",
-      "breakings_change": "The back-end now generates a JSON cache before the front-end loads data, altering how data retrieval and display happen. This is considered a breaking change because it changes the data flow and potentially affects how previous components interact with the API.",
-      "impact": "Users will experience faster loads and more consistent data display, but developers need to update their data handling logic."
+      "impact": "This change modifies the data retrieval process, improving load times but requiring cache management."
     },
     {
       "date": "2025-04-21",
-      "title": "Polish Sidebar and Changelog overview",
-      "whats_new": "Refined sidebar layout and basic page structure for the changelog overview.",
+      "title": "Polish the Sidebar component. Basic layout of ChangelogOverview page",
+      "whats_new": "Improved sidebar UI and layout for navigation.",
       "breaking_change": null,
-      "impact": "Improves usability and navigation within the front-end interface."
+      "impact": "Provides better navigation experience for users."
+    },
+    {
+      "date": "2025-04-21",
+      "title": "Optimize constants to constants/index.tsx file",
+      "whats_new": "Refactored constants into a dedicated file for easier access.",
+      "breaking_change": null,
+      "impact": "Makes code cleaner and more maintainable for developers."
     },
     {
       "date": "2025-04-20",
-      "title": "Implement front-end layout and sidebar",
-      "whats_new": "Built the layout with a collapsible sidebar and main content area for browsing the site features.",
+      "title": "Front-end layout implementation",
+      "whats_new": "Built a sidebar navigation system and layout for the project.",
       "breaking_change": "Yes",
-      "breakings_change": "This update introduces a new front-end layout structure, including a sidebar for navigation. It changes the visual and interaction design, which may affect existing users\u2019 interface expectations. This is a breaking change because it modifies the overall user interface layout.",
-      "impact": "Users will now see a more organized interface with easier navigation, but existing workflows in previous layouts may need adjustment."
+      "impact": "This foundational change alters how users interact with the interface, introducing new navigation patterns."
     },
     {
       "date": "2025-04-20",
-      "title": "Add basic front-end preview for changelog",
-      "whats_new": "Created a simple web page showing a generated changelog from GitHub, powered by OpenAI.",
+      "title": "Basic front-end web implementation",
+      "whats_new": "Developed a user-facing website to display changelogs with automatic content generation.",
       "breaking_change": "Yes",
-      "breakings_change": "This introduces a new user-facing web interface that displays changelog data automatically generated by OpenAI from GitHub commits. It significantly alters how users view changelogs and introduces new features for auto-generation, making it a breaking change for users relying on previous static or manual changelogs.",
-      "impact": "Provides users with an up-to-date, auto-generated changelog view, enhancing their understanding of project progress, but might require adaptation in workflows expecting a different presentation."
+      "impact": "This introduces a new front-end system for users, replacing previous manual methods and enhancing experience."
     },
     {
       "date": "2025-04-20",
-      "title": "Update LLM and schema support",
-      "whats_new": "Enhanced the language model support to identify autosupport for breaking changes in commits.",
+      "title": "Update the llm and schemas",
+      "whats_new": "Enhanced the language model support to detect auto-finding breaking changes.",
       "breaking_change": "Yes",
-      "breakings_change": "The system now automatically detects breaking changes from commits, integrating this information into the changelog generation. This automates and enhances change detection, representing a break in previous manual or less sophisticated detection methods.",
-      "impact": "Developers and users gain more accurate details on breakages, improving transparency but requiring updates to the process of changelog creation."
+      "impact": "Advanced API capabilities that automatically identify breaking commits, improving changelog accuracy."
     },
     {
       "date": "2025-04-19",
-      "title": "Implement second version of LLM and cache deletion",
-      "whats_new": "Updated the language model to a newer version and switched to generate entries with date, impact, title, and news.",
+      "title": "Second version of LLM, delete cache",
+      "whats_new": "Updated the language model to a new version and removed cache files.",
       "breaking_change": null,
-      "impact": "Changelog entries now include more detailed information, improving clarity and usefulness."
+      "impact": "Improves accuracy of change detection for users."
     },
     {
       "date": "2025-04-19",
-      "title": "Basic back-end API implementation",
-      "whats_new": "Developed the foundational API for backend operations.",
+      "title": "Update git ignore",
+      "whats_new": "Refined .gitignore for better repository management.",
       "breaking_change": null,
-      "impact": "Enables backend data handling and API interactions for the project."
+      "impact": "Prevents unwanted files from being tracked, aiding developers."
     },
     {
       "date": "2025-04-19",
-      "title": "Initial app setup and gitignore",
-      "whats_new": "Set up the project structure and configured gitignore for better version control management.",
+      "title": "Basic back-end api implemented",
+      "whats_new": "Initial backend API development completed.",
       "breaking_change": null,
-      "impact": "Provides a clean starting point for development."
+      "impact": "Allows the system to handle data requests from users."
+    },
+    {
+      "date": "2025-04-19",
+      "title": "Initialize app",
+      "whats_new": "Set up the initial application structure.",
+      "breaking_change": null,
+      "impact": "Enables further development and deployment."
     }
   ]
 }
