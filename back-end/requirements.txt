@@ -1,6 +1,6 @@
-fastapi
-openai
-python-dotenv
-gitpython
-pydantic
-uvicorn
+fastapi>=0.95.2
+openai>=0.27.0
+python-dotenv>=1.0.0
+gitpython>=3.1.31
+pydantic>=1.10.7
+uvicorn>=0.22.0
