@@ -1,84 +1,99 @@
-from fastapi import FastAPI, HTTPException
-from utils import get_recent_commits  
-from llm import generate_changelog  
-from schemas import Response 
+from fastapi import FastAPI, HTTPException, Request
 from datetime import date
-from fastapi.middleware.cors import CORSMiddleware
-import json
-import os
-from dotenv import load_dotenv
 from pathlib import Path
+import os
+import json
+import base64
+import requests
+from dotenv import load_dotenv
 
-# Load env file
+# Load environment variables
 load_dotenv()
 
-app = FastAPI(title="AI Changelog Generator")  
+app = FastAPI(title="AI Changelog Generator")
 
-# Add CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # For development only
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# GitHub API configuration
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+REPO_OWNER = os.getenv("REPO_OWNER")
+REPO_NAME = os.getenv("REPO_NAME")
+CHANGELOG_PATH = "./back-end/outputs/changelog.json"
 
-@app.post("/generate", response_model=Response)
-async def generate_changelog_api():
+@app.post("/webhook")
+async def handle_webhook(request: Request):
     try:
-        # setup commits
-        repo_path = os.getenv("REPO_PATH")
-        repo_since = os.getenv("REPO_SINCE", "7 days ago")
-        repo_branch = os.getenv("REPO_BRANCH", "main")
-
-        if not repo_path:
-            raise HTTPException(
-                status_code=400,
-                detail="Repository path not configured. Please set REPO_PATH in .env"
-            )
+        # Get the GitHub payload
+        payload = await request.json()
         
-        commits = get_recent_commits(
-            repo_path,
-            repo_since,
-            repo_branch,
-        )
+        # Verify this is a push event
+        if 'pusher' not in payload:
+            return {"status": "ignored", "reason": "Not a push event"}
+            
+        # Get commit messages
+        commits = payload.get("commits", [])
         if not commits:
-            return Response(
-                entries=[],
-                commits_processed=0,
-                repo_url=repo_path,
-                generated_at=date.today()
-            )
+            return {"status": "ignored", "reason": "No commits in payload"}
         
-        # call openai api
-        changelog = generate_changelog(commits)
-        # Convert dates from strings to date objects
-        for entry in changelog.get("entries", []):
-            if "date" in entry and isinstance(entry["date"], str):
-                entry["date"] = date.fromisoformat(entry["date"])
-
-        response = Response(
-            entries=changelog.get("entries", []),
-            commits_processed=len(commits),
-            repo_url=repo_path,
-            generated_at=date.today()
-        )
-        # Save JSON file
-        save_response_to_json(response)
-        return response
+        # Generate changelog data
+        changelog_data = {
+            "generated_at": str(date.today()),
+            "commits_processed": len(commits),
+            "entries": [
+                {
+                    "date": commit["timestamp"][:10],
+                    "message": commit["message"],
+                    "author": commit["author"]["name"],
+                    "sha": commit["id"]
+                }
+                for commit in commits
+            ]
+        }
+        
+        # Save to GitHub repository
+        save_to_github(changelog_data)
+        
+        return {"status": "success", "commits_processed": len(commits)}
     
-    except Exception as err:
-        raise HTTPException(status_code=400, detail=str(err))
-    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-def save_response_to_json(response: Response) -> str:
-    output_dir = Path("./outputs")
-    output_dir.mkdir(exist_ok=True)
-    filename = f"changelog.json"
-    filepath = output_dir / filename
+def save_to_github(data):
+    """Save the changelog data to the GitHub repository"""
+    # Convert data to JSON string
+    json_content = json.dumps(data, indent=2)
     
-    with open(filepath, "w") as f:
-        json.dump(response.dict(), f, indent=2, default=str)
+    # Encode content to base64
+    encoded_content = base64.b64encode(json_content.encode("utf-8")).decode("utf-8")
+    
+    # GitHub API URL
+    url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{CHANGELOG_PATH}"
+    
+    # First check if file exists to get its SHA
+    headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    
+    # Try to get existing file to update it
+    response = requests.get(url, headers=headers)
+    sha = None
+    if response.status_code == 200:
+        sha = response.json().get("sha")
+    
+    # Create or update the file
+    payload = {
+        "message": f"Update changelog {date.today()}",
+        "content": encoded_content,
+        "branch": "main"
+    }
+    
+    if sha:
+        payload["sha"] = sha
+    
+    response = requests.put(url, headers=headers, json=payload)
+    
+    if response.status_code not in [200, 201]:
+        raise Exception(f"Failed to update GitHub: {response.text}")
 
-    # return the saved file path
-    return str(filepath)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
