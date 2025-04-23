@@ -151,7 +151,7 @@ async def generate_changelog_api():
         )
         
         # Save JSON file
-        save_to_github(response)
+        save_to_github(response.dict())
         return response
     
     except Exception as err:
