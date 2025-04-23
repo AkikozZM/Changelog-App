@@ -2,59 +2,73 @@
   "entries": [
     {
       "date": "2025-04-23",
-      "title": "AI changelog web app completed with deployment",
-      "whats_new": "The new web application now automatically summarizes GitHub commits into a changelog, with full deployment on Railway and Vercel, and code cleanup.",
-      "breaking_change": "The changelog system is now fully automated and user-friendly, changing how users generate and view changelogs.",
-      "impact": "Users can now get automatically summarized and impactful changelogs without manual effort, improving visibility of project updates."
+      "title": "AI changelog web app completed and deployed",
+      "whats_new": "The AI-powered changelog web application has been finished, including automatic summarization of Git commits, deployment on Railway and Vercel, and code cleanup.",
+      "breaking_change": "The web app now automatically generates changelogs by analyzing commit history, providing users with summarized and impact-based entries.",
+      "impact": "Users will receive automatically generated and summarized changelogs with relevant impact information, simplifying change tracking."
     },
     {
       "date": "2025-04-23",
-      "title": "Enhancement: Accurate summarization of breaking changes",
-      "whats_new": "The system now asks the language model to produce more precise summaries of breaking changes.",
-      "breaking_change": "null",
-      "impact": "Users will receive clearer explanations of breaking changes, making updates easier to understand."
+      "title": "Deployment on Railway and Vercel successful",
+      "whats_new": "API has been deployed on Railway, and the front-end is live on Vercel, enabling public access to the changelog service.",
+      "breaking_change": null,
+      "impact": "This allows users to access the changelog application online, enhancing availability and usability."
     },
     {
       "date": "2025-04-23",
-      "title": "Bug fixes on save to git method and LLM bugs",
-      "whats_new": "Fixed bugs related to saving data to GitHub repositories and issues in the language model operations.",
-      "breaking_change": "null",
-      "impact": "The system now handles saving processes more reliably, ensuring data integrity and smooth operation."
+      "title": "Bugs on saving to Git fixed",
+      "whats_new": "Resolved bugs related to saving changelog entries to Git repositories, improving reliability.",
+      "breaking_change": null,
+      "impact": "Users can now save changelog updates to their repositories without errors, ensuring data consistency."
     },
     {
       "date": "2025-04-23",
-      "title": "API and environment setup for deployment",
-      "whats_new": "Setup the cache saving strategy, local and remote storage, and API connection to GitHub.",
-      "breaking_change": "null",
-      "impact": "Enhances the backend functionality for better performance, cache management, and user data handling."
+      "title": "GitHub repository save bug fixed",
+      "whats_new": "The issue preventing changelog entries from being saved to GitHub repositories has been corrected.",
+      "breaking_change": null,
+      "impact": "Enables seamless saving of changelog data directly to user repositories, improving workflow."
     },
     {
       "date": "2025-04-23",
-      "title": "Configuration and deployment to Railway and GitHub",
-      "whats_new": "Deployed backend and frontend services for changelog generation and interaction via Railway and webhooks.",
-      "breaking_change": "null",
-      "impact": "Allows users to interact with live changelog services, automating updates from repositories."
+      "title": "Local and API cache strategies maintained",
+      "whats_new": "The system continues to store changelog cache locally and via GitHub API for efficient data retrieval.",
+      "breaking_change": null,
+      "impact": "Improves performance and reduces redundant data fetching, leading to faster changelog display."
     },
     {
       "date": "2025-04-23",
-      "title": "Open API configuration allowing user customization",
-      "whats_new": "Users can now configure their own Git repositories, OpenAI API keys, and model settings.",
-      "breaking_change": "Users have increased control over the system configurations, which may alter default behaviors.",
-      "impact": "Users can tailor the changelog generator to their specific project needs, including private repositories and custom models."
+      "title": "Configuration options added for users",
+      "whats_new": "Users can now configure their own Git repositories, OpenAI LLM, API keys, and other settings.",
+      "breaking_change": "Allowing user customization introduces flexibility but also changes the way configurations are managed, potentially affecting existing workflows.",
+      "impact": "Users gain the ability to personalize and optimize changelog generation based on their repositories and AI models, but must manage their API keys and settings securely."
     },
     {
       "date": "2025-04-22",
-      "title": "Improved interface management and changelog detail page",
-      "whats_new": "Refined front-end to better manage interfaces and enable detailed log views, with click navigation.",
-      "breaking_change": "null",
-      "impact": "Provides a more intuitive and interactive experience for users exploring changelog details."
+      "title": "Frontend improvements and interface enhancements",
+      "whats_new": "Improved the home page design, added a loading effect, and decorated the changelog detail page with clickable entries for details.",
+      "breaking_change": "Now, when a user clicks a changelog entry, it navigates to detailed information, changing previous static behaviors.",
+      "impact": "Enhances user experience by providing intuitive navigation and detailed change insights."
     },
     {
       "date": "2025-04-21",
-      "title": "Cache strategy for faster changelog display",
-      "whats_new": "Back-end now generates a JSON cache file first; frontend loads this cache for faster display.",
-      "breaking_change": "Users will now see cached changelog data instead of real-time generation, speeding up load times.",
-      "impact": "Improves performance and responsiveness for users viewing changelogs."
+      "title": "Backend cache strategy changed to JSON file generation",
+      "whats_new": "The backend now creates a JSON cache file which the frontend loads initially before fetching fresh data.",
+      "breaking_change": "The API now generates a JSON cache before presenting changelog data, which affects how data is retrieved and displayed.",
+      "impact": "Improves performance by reducing load times, but might introduce slight delays if cache needs updating."
+    },
+    {
+      "date": "2025-04-21",
+      "title": "Changelog detail page implemented with entry navigation",
+      "whats_new": "Clicking a changelog entry now redirects to a detailed view of that specific change.",
+      "breaking_change": "Navigation behavior changed from static list to interactive detailed views, providing more context.",
+      "impact": "Users can explore specific changelog entries in detail, enhancing clarity and traceability."
+    },
+    {
+      "date": "2025-04-20",
+      "title": "Basic front-end web interface created for changelog display",
+      "whats_new": "A simple web interface now displays automatically generated changelogs, including essential information like date, news, impact, and breaking changes.",
+      "breaking_change": "The frontend now automatically fetches and displays changelog data, replacing manual or static content.",
+      "impact": "Provides users with a visual and accessible way to view project changes directly from the web."
     }
   ],
   "commits_processed": 0,
