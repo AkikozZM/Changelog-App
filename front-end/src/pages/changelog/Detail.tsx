@@ -263,7 +263,7 @@ export default function ChangelogDetail() {
                   </h3>
                   <div className="flex items-center">
                     <FiCheckSquare className="text-green-500 mr-2" />
-                    <span className="cursor-pointer">Billing</span>
+                    <span className="cursor-pointer">Greptile</span>
                   </div>
                 </div>
               </div>

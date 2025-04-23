@@ -5,7 +5,12 @@ from schemas import Request, Response
 from datetime import date
 from fastapi.middleware.cors import CORSMiddleware
 import json
+import os
+from dotenv import load_dotenv
 from pathlib import Path
+
+# Load env file
+load_dotenv()
 
 app = FastAPI(title="AI Changelog Generator")  
 
@@ -19,19 +24,29 @@ app.add_middleware(
 )
 
 @app.post("/generate", response_model=Response)
-async def generate_changelog_api(request: Request):
+async def generate_changelog_api():
     try:
         # setup commits
+        repo_path = os.getenv("REPO_PATH")
+        repo_since = os.getenv("REPO_SINCE", "7 days ago")
+        repo_branch = os.getenv("REPO_BRANCH", "main")
+
+        if not repo_path:
+            raise HTTPException(
+                status_code=400,
+                detail="Repository path not configured. Please set REPO_PATH in .env"
+            )
+        
         commits = get_recent_commits(
-            request.repo_path,
-            request.since,
-            request.branch
+            repo_path,
+            repo_since,
+            repo_branch,
         )
         if not commits:
             return Response(
                 entries=[],
                 commits_processed=0,
-                repo_url=request.repo_path,
+                repo_url=repo_path,
                 generated_at=date.today()
             )
         
@@ -45,7 +60,7 @@ async def generate_changelog_api(request: Request):
         response = Response(
             entries=changelog.get("entries", []),
             commits_processed=len(commits),
-            repo_url=request.repo_path,
+            repo_url=repo_path,
             generated_at=date.today()
         )
         # Save JSON file

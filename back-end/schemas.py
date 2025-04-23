@@ -6,11 +6,11 @@ class ChangeEntry(BaseModel):
     date: date
     title: str
     whats_new: str
-    breaking_change: Optional[str] = None
+    breaking_change: Optional[str] = Field(default=None, nullable=True)
     impact: str
 
 class Request(BaseModel):
-    repo_path: str
+    repo_path: Optional[str] = None
     since: str = "7 days ago"
     branch: str = "main"
 

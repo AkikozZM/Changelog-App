@@ -2,9 +2,8 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 import json
-from datetime import datetime
-from schemas import Response 
 
+# Load env file
 load_dotenv()
 
 # Get api key from my local .env
@@ -23,7 +22,7 @@ def generate_changelog(commit_data):
         ]
 
         response = client.chat.completions.create(
-            model="gpt-4.1-nano",
+            model= os.getenv("OPENAI_MODEL"),
             response_format={"type": "json_object"},
             messages=[{
                 "role": "system",
@@ -39,11 +38,12 @@ def generate_changelog(commit_data):
                         }
                     ]
                 }
-                For each commit, determine if it contains breaking changes by looking for keywords like:
+                For each commit, determine if it contains breaking changes by looking for keywords like: 
                     - "breaking change"
                     - "important change"
                     - "significant change"
                 Make breaking_change field None if you don't find the breaking changes.
+                If you find the breaking changes, you need to summarize the breaking changes and write a description of why it is a breaking change.
                 Make the output human-readable for non-technical users.""",
             }, {
                 "role": "user",
