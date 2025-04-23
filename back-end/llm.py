@@ -45,7 +45,9 @@ def generate_changelog(commit_data):
                 You can leave breaking_change field null if you don't find the breaking changes.
                 NEVER include any other variations.
                 If you find the breaking changes, you need to summarize the breaking changes and write a description of why it is a breaking change.
-                Make the output human-readable for non-technical users.""",
+                Make the output human-readable for non-technical users.
+                Include ALL commits in the changelog, even minor ones.
+                Group similar changes together when appropriate, but never omit commits entirely.""",
             }, {
                 "role": "user",
                 "content": "\n".join(formatted_commits),
