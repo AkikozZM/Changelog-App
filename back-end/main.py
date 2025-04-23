@@ -123,17 +123,33 @@ async def generate_changelog_api():
         
         # call openai api
         changelog = generate_changelog(commits)
-        # Convert dates from strings to date objects
+        # Validate and complete entries
+        validated_entries = []
         for entry in changelog.get("entries", []):
-            if "date" in entry and isinstance(entry["date"], str):
-                entry["date"] = date.fromisoformat(entry["date"])
+            # Ensure required fields exist
+            if not all(field in entry for field in ["date", "title", "whats_new", "impact"]):
+                continue  # Skip invalid entries
+                
+            # Convert date if needed
+            entry_date = entry["date"]
+            if isinstance(entry_date, str):
+                entry_date = date.fromisoformat(entry_date)
+                
+            validated_entries.append({
+                "date": entry_date,
+                "title": entry["title"],
+                "whats_new": entry["whats_new"],
+                "breaking_change": entry.get("breaking_change"),
+                "impact": entry["impact"]
+            })
 
         response = Response(
-            entries=changelog.get("entries", []),
+            entries=validated_entries,
             commits_processed=len(commits),
             repo_url=REPO_PATH,
             generated_at=date.today()
         )
+        
         # Save JSON file
         save_response_to_json(response)
         return response
