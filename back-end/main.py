@@ -7,6 +7,8 @@ import requests
 from dotenv import load_dotenv
 from llm import generate_changelog
 from utils import get_recent_commits
+from schemas import Request, Response
+from pathlib import Path
 
 # Load environment variables
 load_dotenv()
@@ -22,7 +24,7 @@ REPO_OWNER = os.getenv("REPO_OWNER")
 REPO_NAME = os.getenv("REPO_NAME")
 CHANGELOG_PATH = "./back-end/outputs/changelog.json"
 
-@app.post("/generate")
+@app.post("/git_generate")
 async def handle_webhook(request: Request):
     try:
         # Validate environment variables
@@ -93,3 +95,61 @@ def save_to_github(data):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8080)
+
+
+
+@app.post("/local_generate", response_model=Response)
+async def generate_changelog_api():
+    try:
+        # Validate environment variables
+        if not all([REPO_PATH, GITHUB_TOKEN, REPO_OWNER, REPO_NAME]):
+            raise HTTPException(
+                status_code=400,
+                detail="Missing required environment variables"
+            )
+        
+        commits = get_recent_commits(
+            REPO_PATH,
+            REPO_SINCE,
+            REPO_BRANCH,
+        )
+        if not commits:
+            return Response(
+                entries=[],
+                commits_processed=0,
+                repo_url=REPO_PATH,
+                generated_at=date.today()
+            )
+        
+        # call openai api
+        changelog = generate_changelog(commits)
+        # Convert dates from strings to date objects
+        for entry in changelog.get("entries", []):
+            if "date" in entry and isinstance(entry["date"], str):
+                entry["date"] = date.fromisoformat(entry["date"])
+
+        response = Response(
+            entries=changelog.get("entries", []),
+            commits_processed=len(commits),
+            repo_url=REPO_PATH,
+            generated_at=date.today()
+        )
+        # Save JSON file
+        save_response_to_json(response)
+        return response
+    
+    except Exception as err:
+        raise HTTPException(status_code=400, detail=str(err))
+    
+
+def save_response_to_json(response: Response) -> str:
+    output_dir = Path("./outputs")
+    output_dir.mkdir(exist_ok=True)
+    filename = f"changelog.json"
+    filepath = output_dir / filename
+    
+    with open(filepath, "w") as f:
+        json.dump(response.dict(), f, indent=2, default=str)
+
+    # return the saved file path
+    return str(filepath)
