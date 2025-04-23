@@ -4,9 +4,13 @@
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.95-green.svg)](https://fastapi.tiangolo.com/)
 
+
+
 An intelligent changelog generator that automatically transforms Git commits into beautifully formatted release notes using AI. Perfect for developers who want to save time while maintaining professional documentation.
 
-![Demo]()
+|Fast Demo|
+|:-:|
+|<img src="img/demo.gif" width=800>|
 
 ## ✨ Features
 
@@ -30,6 +34,13 @@ An intelligent changelog generator that automatically transforms Git commits int
 | AI Engine       | OpenAI "gpt-4.1-nano" |
 | Deployment      | Railway (Backend), Vercel (Frontend) |
 | Version Control | GitHub |
+
+
+## 🎨Design Concept
+
+|Concept|
+|:-:|
+|<img src="img/AI-Changelog app.png" width=800>|
 
 ## 🚀 Quick Start
 
