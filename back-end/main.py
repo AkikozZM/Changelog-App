@@ -159,13 +159,17 @@ async def generate_changelog_api():
     
 
 def save_response_to_json(response: Response) -> str:
-    output_dir = Path("./outputs")
+    # Use absolute path for reliability
+    output_dir = Path(__file__).parent / "outputs"  # Saves in /back-end/outputs
     output_dir.mkdir(exist_ok=True)
-    filename = f"changelog.json"
-    filepath = output_dir / filename
     
-    with open(filepath, "w") as f:
-        json.dump(response.dict(), f, indent=2, default=str)
-
-    # return the saved file path
-    return str(filepath)
+    filepath = output_dir / "changelog.json"
+    
+    try:
+        with open(filepath, "w") as f:
+            json.dump(response.dict(), f, indent=2, default=str)
+        print(f"Successfully saved to {filepath}")  # Debug logging
+        return str(filepath)
+    except Exception as e:
+        print(f"Failed to save file: {str(e)}")
+        raise
