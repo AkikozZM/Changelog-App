@@ -1,11 +1,12 @@
 from fastapi import FastAPI, HTTPException, Request
 from datetime import date
-from pathlib import Path
 import os
 import json
 import base64
 import requests
 from dotenv import load_dotenv
+from llm import generate_changelog
+from utils import get_recent_commits
 
 # Load environment variables
 load_dotenv()
@@ -13,6 +14,9 @@ load_dotenv()
 app = FastAPI(title="AI Changelog Generator")
 
 # GitHub API configuration
+REPO_PATH = os.getenv("REPO_PATH")
+REPO_SINCE = os.getenv("REPO_SINCE", "7 days ago")
+REPO_BRANCH = os.getenv("REPO_BRANCH", "main")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 REPO_OWNER = os.getenv("REPO_OWNER")
 REPO_NAME = os.getenv("REPO_NAME")
@@ -21,37 +25,29 @@ CHANGELOG_PATH = "./back-end/outputs/changelog.json"
 @app.post("/generate")
 async def handle_webhook(request: Request):
     try:
-        # Get the GitHub payload
-        payload = await request.json()
-        
-        # Verify this is a push event
-        if 'pusher' not in payload:
-            return {"status": "ignored", "reason": "Not a push event"}
-            
-        # Get commit messages
-        commits = payload.get("commits", [])
+        # Validate environment variables
+        if not all([REPO_PATH, GITHUB_TOKEN, REPO_OWNER, REPO_NAME]):
+            raise HTTPException(
+                status_code=400,
+                detail="Missing required environment variables"
+            )
+
+        # Get commits from the target repository
+        commits = get_recent_commits(REPO_PATH, REPO_SINCE, REPO_BRANCH)
         if not commits:
-            return {"status": "ignored", "reason": "No commits in payload"}
-        
-        # Generate changelog data
-        changelog_data = {
-            "generated_at": str(date.today()),
-            "commits_processed": len(commits),
-            "entries": [
-                {
-                    "date": commit["timestamp"][:10],
-                    "message": commit["message"],
-                    "author": commit["author"]["name"],
-                    "sha": commit["id"]
-                }
-                for commit in commits
-            ]
-        }
+            return {"status": "success", "message": "No new commits found"}
+
+        # Generate formatted changelog using LLM
+        changelog = generate_changelog(commits)
         
         # Save to GitHub repository
-        save_to_github(changelog_data)
+        save_to_github(changelog)
         
-        return {"status": "success", "commits_processed": len(commits)}
+        return {
+            "status": "success",
+            "commits_processed": len(commits),
+            "changelog_entries": len(changelog.get("entries", []))
+        }
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -96,4 +92,4 @@ def save_to_github(data):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
