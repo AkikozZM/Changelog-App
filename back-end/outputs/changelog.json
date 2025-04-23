@@ -1,8 +1,8 @@
 {
   "entries": [
     {
-      "date": "2025-04-23",
-      "title": "AI web app development completed and deployed",
+      "date": "2025-04-25",
+      "title": "This is a test of modifying the TITLE",
       "whats_new": "The AI-powered changelog web application is now complete, automatically summarizing Git commit changes. The API is deployed on Railway, and the front-end on Vercel. Unnecessary code has been cleaned up.",
       "breaking_change": "The web app now automatically generates summaries of Git changes, altering previous manual methods, and improving user experience with automation.",
       "impact": "Users receive instant, automated changelog summaries for Git repositories, streamlining update tracking."
