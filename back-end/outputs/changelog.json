@@ -2,66 +2,52 @@
   "entries": [
     {
       "date": "2025-04-23",
-      "title": "AI-changelog web app complete",
-      "whats_new": "The web application for automatic generation of changelogs using AI has been finished and deployed. It summarizes changes from Git commits and is accessible online.",
-      "breaking_change": "This release introduces an AI-powered changelog web app that automatically summarizes updates based on Git commits, enabling users to view concise change summaries without manual input. The API and front-end are deployed on Railway and Vercel respectively, and unnecessary code has been cleaned up.",
-      "impact": "Users can now easily see automatic summaries of updates, making tracking changes more efficient and understandable for non-technical users."
+      "title": "Web app completion and deployment",
+      "whats_new": "The AI-powered changelog web app has been fully developed and deployed on Railway and Vercel, enabling automated summarization of Git commits.",
+      "breaking_change": "The changelog web app now automatically summarizes changes based on Git commits, replacing manual processes and potentially changing how users view changelogs.",
+      "impact": "Users will experience faster, automated generation of changelogs, improving efficiency and consistency in change tracking."
     },
     {
       "date": "2025-04-23",
-      "title": "Configure user API and open source access",
-      "whats_new": "Users can now configure their own Git repositories, OpenAI LLM models, API keys, and other settings, allowing for personalized and flexible changelog generation.",
-      "breaking_change": "This update allows end users to customize their Git repositories and AI models, enhancing the system's flexibility and user control.",
-      "impact": "Users gain the ability to connect their own codebases and AI models, making the changelog generation tailored to their specific projects."
+      "title": "Enhanced configuration options",
+      "whats_new": "Users can now configure their own Git repositories, OpenAI LLM models, API keys, and related settings.",
+      "breaking_change": "The system now allows user-specific configurations of repositories and AI models, greatly increasing flexibility but requiring users to set up their preferences.",
+      "impact": "Users will have greater control over the changelog generation process and can tailor the tool to their specific needs."
     },
     {
       "date": "2025-04-23",
-      "title": "Front-end layout improvements",
-      "whats_new": "The front-end interface has been decorated, with home page styling, loading effects during changelog display, and a floating navigation bar added.",
-      "breaking_change": "The interface layout has been improved to enhance user experience, including click behavior to view detailed log entries.",
-      "impact": "Users will experience a more visually appealing and navigable interface, with easier access to detailed changelog entries."
+      "title": "Multiple bug fixes and bug fixes on save methods",
+      "whats_new": "Fixed bugs related to saving changelog data to Git and GitHub, and resolved issues with the LLM bugs.",
+      "breaking_change": null,
+      "impact": "More reliable saving and data management ensures a smoother experience for users."
     },
     {
       "date": "2025-04-23",
-      "title": "Backend API and cache strategy updates",
-      "whats_new": "The backend now generates a JSON cache file for the changelog, which the front-end loads for faster access. Layout content has been centered, and icons updated.",
-      "breaking_change": "The system now adopts a caching mechanism where a JSON file is generated prior to displaying changelogs, and clicking on entries navigates to detailed views.",
-      "impact": "Changelog loading speed is improved due to caching, providing a smoother viewing experience whereas clicking entries now reveals detailed logs."
+      "title": "Improvements in cache management",
+      "whats_new": "Implemented strategies for saving cache to GitHub API, local persistence, and applying entry limits.",
+      "breaking_change": null,
+      "impact": "Performance and data consistency are improved, reducing potential delays and data loss."
     },
     {
       "date": "2025-04-23",
-      "title": "Installation and deployment enhancements",
-      "whats_new": "Deployment on Railway has been successful, with updates to requirements files, environment setup, and API deployment configurations.",
-      "breaking_change": "Deployment process now includes user-configurable environment settings and API keys, supporting custom Git repo and AI configurations.",
-      "impact": "Developers and users can deploy and customize their systems more easily, enabling tailored changelog generation aligned with their project setup."
+      "title": "Basic front-end web interface",
+      "whats_new": "A frontend interface was created for users to view the changelog, with auto-generated content from OpenAI, including dates, news, impact, and breaking changes.",
+      "breaking_change": "The platform now displays auto-generated changelogs, altering how users review project updates.",
+      "impact": "Provides a user-friendly interface for viewing summarized project changes without manual input."
     },
     {
       "date": "2025-04-22",
-      "title": "Interface management and changelog detail page",
-      "whats_new": "Interfaces have been consolidated into a single file for easy management, and the detailed changelog page now allows navigation to specific entry details.",
-      "breaking_change": "Clicking on a changelog entry now navigates to a dedicated page with detailed information about that specific update.",
-      "impact": "Users can now see more detailed information about each changelog entry, improving clarity and traceability of changes."
+      "title": "Changelog detail view feature",
+      "whats_new": "Clicking on individual entries in the changelog now navigates to the detailed view of that specific log.",
+      "breaking_change": "The user interface behavior has changed to include detailed views for each changelog entry, enhancing navigation.",
+      "impact": "Users can now explore detailed information about specific changes directly from the overview."
     },
     {
       "date": "2025-04-21",
-      "title": "Back-end and front-end cache integration",
-      "whats_new": "The back-end generates a JSON cache file for the changelog, which the front-end loads to display updates, with layout adjustments and icon updates.",
-      "breaking_change": "The system now generates and loads a pre-created JSON cache for faster data access and display, with a new layout and icon.",
-      "impact": "Faster loading times of changelogs and improved user interface for easier navigation and viewing."
-    },
-    {
-      "date": "2025-04-20",
-      "title": "Basic front-end web layout and features",
-      "whats_new": "A foundational web interface for viewing changelogs has been implemented, including a sidebar for navigation and content placeholders.",
-      "breaking_change": "A basic front-end face is now present, with auto-generated content from AI summarizing commits, including detection of breaking changes.",
-      "impact": "Users can now access a visual representation of project updates, streamlining review of recent changes."
-    },
-    {
-      "date": "2025-04-19",
-      "title": "Backend API and AI capabilities",
-      "whats_new": "The backend API was implemented, supporting new features like title, news, breaking change detection, and impact assessments in changelogs, powered by an improved AI model.",
-      "breaking_change": "The AI generator now automatically identifies potential breaking changes in commits, providing users with alerts about significant modifications.",
-      "impact": "Users receive more detailed and insightful changelogs, highlighting important or breaking modifications for better awareness."
+      "title": "JSON cache strategy for frontend-backend connection",
+      "whats_new": "The backend generates a JSON cache file, which the frontend loads for displaying changelogs. Layout content is centered and icon changed to Greptile.",
+      "breaking_change": "The API now provides a JSON cache file as a standard, which may affect existing data access methods and display layout.",
+      "impact": "Improved performance and clarity in how changelogs are fetched and displayed."
     }
   ],
   "commits_processed": 0,
