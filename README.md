@@ -56,6 +56,17 @@ An intelligent changelog generator that automatically transforms Git commits int
 - cp .env.example .env
 - Deploy the back-end folder on Railway
 - Set up the variables
-- Use "http POST https://YOUR_WEB/git_generate"
+
+|Back-end setup|
+|:-:|
+|<img src="img/back-end.png" width=800>|
+
+- Use "http POST https://YOUR_HTTP_DOMAIN/git_generate"
+- (If you want to use my domain, feel free to reach out!)
 - The changelog will be auto-generated in your GitHub Repo -> back-end/outputs/changelog.json
+
+
+
+
+
 
