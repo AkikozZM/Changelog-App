@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { FiHome, FiMessageSquare, FiGitCommit } from "react-icons/fi";
+import { FiHome, FiGitCommit } from "react-icons/fi";
 
 export const changelogItems = [
   {
