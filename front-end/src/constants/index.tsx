@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { FiHome, FiMessageSquare, FiGitCommit } from "react-icons/fi";
 
 export const changelogItems = [
@@ -21,11 +22,11 @@ export const mainItems = [
     icon: <FiHome size={18} />,
     path: "/home",
   },
-  {
-    name: "Chat",
-    icon: <FiMessageSquare size={18} />,
-    path: "/chat",
-  },
+  // {
+  //   name: "Chat",
+  //   icon: <FiMessageSquare size={18} />,
+  //   path: "/chat",
+  // },
   {
     name: "Changelog",
     icon: <FiGitCommit size={18} />,
