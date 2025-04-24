@@ -29,7 +29,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
       <div className="p-4 border-b border-gray-200 flex items-center justify-between">
         {!isCollapsed && (
           <Link to={"/home"}>
-            <h2 className="font-semibold text-green-700">Greptile</h2>
+            <h2 className="font-semibold text-green-700">AI-Changelog</h2>
           </Link>
         )}
         <button
